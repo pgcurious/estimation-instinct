@@ -1,0 +1,331 @@
+/* ============================================================
+   The Estimation Instinct — reading-first theme
+   mdBook sets `:root { font-size: 62.5% }`, so 1rem = 10px.
+   Sizes below use px to stay unambiguous.
+   Built to sit beside the other pgcurious books (Literata + Inter),
+   with a monospace face for the arithmetic that carries this one.
+   ============================================================ */
+
+:root {
+  --content-max-width: 760px;
+  --sidebar-width: 320px;
+  --book-serif: "Literata", Georgia, "Times New Roman", serif;
+  --book-sans: "Inter", "Segoe UI", system-ui, sans-serif;
+  --book-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+  /* fixed hues that read on both the light (rust) and dark (navy) themes */
+  --c-instinct: #c98f18;   /* ⚡ instinct check — amber */
+  --c-trap: #d1453b;       /* ⚠️ trap — red */
+  --c-say: #2e9e83;        /* Say it in 60s — teal (the performance) */
+  --c-worked: #8a63d2;     /* 🧮 worked example — violet */
+}
+
+/* ---------- body copy ---------- */
+
+.content main {
+  font-family: var(--book-serif);
+  font-size: 19px;
+  line-height: 1.72;
+  padding: 8px 32px 80px;
+}
+
+.content main p { line-height: inherit; margin: 0 0 1.05em; }
+
+.content main ul,
+.content main ol { line-height: inherit; margin: 0 0 1.05em; padding-inline-start: 1.55em; }
+
+.content main li { margin: 0.35em 0; }
+
+.content main strong { font-weight: 700; }
+
+.content ::selection { background: color-mix(in srgb, var(--links) 25%, transparent); }
+
+/* ---------- headings ---------- */
+
+.content main h1,
+.content main h2,
+.content main h3,
+.content main h4 {
+  font-family: var(--book-serif);
+  letter-spacing: -0.012em;
+  line-height: 1.22;
+}
+
+.content main h1 { font-size: 35px; font-weight: 700; margin: 26px 0 10px; }
+
+/* short accent rule under each chapter title */
+.content main h1::after {
+  content: "";
+  display: block;
+  width: 64px; height: 3px;
+  margin: 20px 0 26px;
+  background: var(--links);
+  border-radius: 2px;
+  opacity: 0.9;
+}
+
+.content main h2 { font-size: 24px; font-weight: 700; margin: 2.2em 0 0.6em; }
+.content main h3 { font-size: 20px; font-weight: 600; margin: 1.8em 0 0.5em; }
+.content main h4 { font-size: 17px; font-weight: 600; margin: 1.5em 0 0.4em; }
+
+/* the chapter subtitle: the single italic line right under the H1 */
+.content main > h1 + p em:only-child,
+.content main > h1 + p > em:first-child:last-child {
+  font-style: italic;
+}
+.content main > h1 + p {
+  color: color-mix(in srgb, var(--fg) 78%, transparent);
+  font-size: 20px;
+}
+
+/* ---------- drop cap on each chapter's opening paragraph (skip the italic subtitle) ---------- */
+
+.content main > h1 + p + p::first-letter {
+  float: left;
+  font-family: var(--book-serif);
+  font-size: 56px;
+  line-height: 0.82;
+  font-weight: 700;
+  padding: 6px 10px 0 0;
+  color: var(--links);
+}
+
+/* ---------- links ---------- */
+
+.content main a:not(.header) {
+  color: var(--links);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+  text-decoration-color: color-mix(in srgb, var(--links) 40%, transparent);
+}
+.content main a:not(.header):hover { text-decoration-color: var(--links); }
+
+/* ---------- inline code (numbers, units) ---------- */
+
+.content main :not(pre) > code {
+  font-family: var(--book-mono);
+  font-size: 0.82em;
+  padding: 2px 6px;
+  border-radius: 5px;
+  background: color-mix(in srgb, var(--fg) 8%, transparent);
+}
+
+/* ---------- the arithmetic: fenced code blocks carry this book ---------- */
+
+.content main pre {
+  font-size: 14.5px;
+  line-height: 1.62;
+  border-radius: 10px;
+  padding: 16px 20px;
+  border: 1px solid color-mix(in srgb, var(--fg) 12%, transparent);
+  border-left: 3px solid color-mix(in srgb, var(--links) 55%, transparent);
+  overflow-x: auto;
+}
+.content main pre code {
+  font-family: var(--book-mono);
+  font-variant-ligatures: none;
+}
+
+/* ---------- blockquotes: quiet by default ---------- */
+
+.content main blockquote {
+  margin: 1.7em 0;
+  padding: 2px 0 2px 24px;
+  background: transparent;
+  border: none;
+  border-inline-start: 3px solid color-mix(in srgb, var(--links) 45%, transparent);
+  color: color-mix(in srgb, var(--fg) 90%, transparent);
+}
+
+/* ---------- emoji-led ritual callouts (classes set by callouts.js) ---------- */
+
+.content main .callout-instinct,
+.content main .callout-room,
+.content main .callout-trap,
+.content main .callout-worked {
+  border: 1px solid;
+  border-inline-start-width: 4px;
+  border-radius: 10px;
+  padding: 14px 20px;
+  margin: 1.9em 0;
+  font-size: 18px;
+}
+.content main .callout-instinct {
+  border-color: color-mix(in srgb, var(--c-instinct) 55%, transparent);
+  background: color-mix(in srgb, var(--c-instinct) 9%, transparent);
+}
+.content main .callout-room {
+  border-color: color-mix(in srgb, var(--links) 50%, transparent);
+  background: color-mix(in srgb, var(--links) 8%, transparent);
+}
+.content main .callout-trap {
+  border-color: color-mix(in srgb, var(--c-trap) 50%, transparent);
+  background: color-mix(in srgb, var(--c-trap) 8%, transparent);
+}
+.content main .callout-worked {
+  border-color: color-mix(in srgb, var(--c-worked) 50%, transparent);
+  background: color-mix(in srgb, var(--c-worked) 8%, transparent);
+}
+
+/* ---------- "Say it in 60 seconds" — the performance card ---------- */
+
+.content main h2.sec-say60 {
+  color: var(--c-say);
+}
+.content main h2.sec-say60::before {
+  content: "🎤 ";
+  font-size: 0.9em;
+}
+.content main blockquote.say60 {
+  border: 1px solid color-mix(in srgb, var(--c-say) 45%, transparent);
+  border-inline-start: 4px solid var(--c-say);
+  background: color-mix(in srgb, var(--c-say) 8%, transparent);
+  border-radius: 10px;
+  padding: 18px 22px;
+  margin: 1em 0 2em;
+  font-size: 18.5px;
+  font-style: normal;
+}
+
+/* ---------- "Numbers to keep" — the takeaway card ---------- */
+
+.content main h2.sec-numbers::before { content: "📌 "; font-size: 0.9em; }
+.content main ul.numbers {
+  border: 1px solid color-mix(in srgb, var(--fg) 16%, transparent);
+  background: color-mix(in srgb, var(--fg) 4%, transparent);
+  border-radius: 10px;
+  padding: 16px 22px 16px 40px;
+  font-family: var(--book-sans);
+  font-size: 16px;
+  line-height: 1.5;
+}
+.content main ul.numbers li { margin: 0.5em 0; }
+
+/* ---------- pushback dialogue ---------- */
+
+.content main h2.sec-pushback::before { content: "🥊 "; font-size: 0.9em; }
+.content main p.dialogue-q,
+.content main p.dialogue-a {
+  border-radius: 10px;
+  padding: 12px 18px;
+  margin: 0.7em 0;
+}
+.content main p.dialogue-q {
+  background: color-mix(in srgb, var(--fg) 6%, transparent);
+}
+.content main p.dialogue-a {
+  background: color-mix(in srgb, var(--links) 7%, transparent);
+  border-inline-start: 3px solid color-mix(in srgb, var(--links) 45%, transparent);
+}
+.content main p.dialogue-q strong { color: color-mix(in srgb, var(--fg) 75%, transparent); }
+.content main p.dialogue-a strong { color: var(--links); }
+
+/* ---------- drills: the <details> answer cards ---------- */
+
+.content main details {
+  border: 1px solid color-mix(in srgb, var(--fg) 15%, transparent);
+  border-radius: 10px;
+  padding: 4px 18px;
+  margin: 0.8em 0 1.6em;
+  background: color-mix(in srgb, var(--fg) 3%, transparent);
+}
+.content main details[open] {
+  border-color: color-mix(in srgb, var(--c-say) 40%, transparent);
+  background: color-mix(in srgb, var(--c-say) 5%, transparent);
+}
+.content main details > summary {
+  cursor: pointer;
+  font-family: var(--book-sans);
+  font-weight: 600;
+  font-size: 15px;
+  padding: 10px 0;
+  color: var(--links);
+  list-style: none;
+}
+.content main details > summary::before {
+  content: "▸ ";
+  display: inline-block;
+  transition: transform .15s ease;
+}
+.content main details[open] > summary::before { content: "▾ "; }
+.content main details > summary::-webkit-details-marker { display: none; }
+
+/* ---------- tables ---------- */
+
+.content main table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 1.7em 0;
+  font-family: var(--book-sans);
+  font-size: 15px;
+  line-height: 1.55;
+  border: none;
+  display: table;
+}
+.content main table thead,
+.content main table thead tr { background: transparent; }
+.content main table thead th {
+  text-align: left;
+  font-weight: 600;
+  padding: 10px 12px;
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid color-mix(in srgb, var(--fg) 35%, transparent);
+}
+.content main table td {
+  padding: 10px 12px;
+  border: none;
+  border-bottom: 1px solid color-mix(in srgb, var(--fg) 14%, transparent);
+}
+.content main table tbody tr:nth-child(2n) {
+  background: color-mix(in srgb, var(--fg) 3%, transparent);
+}
+
+/* ---------- section-break flourish ---------- */
+
+.content main hr {
+  border: none;
+  margin: 2.8em 0;
+  text-align: center;
+}
+.content main hr::after {
+  content: "· · ·";
+  display: block;
+  letter-spacing: 0.7em;
+  padding-left: 0.7em;
+  color: color-mix(in srgb, var(--fg) 55%, transparent);
+  font-size: 19px;
+}
+
+/* ---------- sidebar & chrome ---------- */
+
+.sidebar { font-family: var(--book-sans); }
+.chapter { font-size: 14.5px; line-height: 1.45; }
+.chapter li.chapter-item { margin-block-start: 0.7em; }
+.chapter li.part-title {
+  margin-block-start: 1.9em;
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  opacity: 0.65;
+}
+.chapter li a.active { font-weight: 600; }
+.menu-title {
+  font-family: var(--book-serif);
+  font-size: 19px;
+  font-weight: 600;
+  letter-spacing: 0;
+}
+
+/* ---------- responsive ---------- */
+
+@media (max-width: 1080px) {
+  .content main { font-size: 18px; }
+}
+@media (max-width: 720px) {
+  .content main { font-size: 17px; line-height: 1.68; padding: 4px 12px 56px; }
+  .content main h1 { font-size: 29px; }
+  .content main > h1 + p + p::first-letter { font-size: 46px; }
+  .content main pre { font-size: 13px; }
+}

@@ -1,0 +1,23 @@
+[book]
+title = "The Estimation Instinct"
+authors = ["Pradipta Gure"]
+description = "Back-of-the-envelope estimation for system design interviews — from first principles to reflex. A free book with 30 system walkthroughs, an interactive practice arena, a spaced-repetition program, a cheat sheet and an Anki deck."
+language = "en"
+src = "src"
+
+[output.html]
+default-theme = "rust"
+preferred-dark-theme = "navy"
+smart-punctuation = true
+git-repository-url = "https://github.com/pgcurious/estimation-instinct"
+edit-url-template = "https://github.com/pgcurious/estimation-instinct/edit/main/{path}"
+additional-css = ["theme/custom.css", "theme/practice-arena.css"]
+additional-js = ["theme/callouts.js", "theme/practice-arena.js"]
+
+[output.html.fold]
+enable = true
+level = 1
+
+[output.html.search]
+enable = true
+limit-results = 20

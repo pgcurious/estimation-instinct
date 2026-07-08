@@ -1,3 +1,9 @@
+# mdBook build output
+/book
+
+# Local tooling (preview server config)
+.claude/
+
 # OS noise
 .DS_Store
 Thumbs.db

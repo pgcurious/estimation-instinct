@@ -1,0 +1,109 @@
+/* ============================================================
+   The Practice Arena widget — theme-aware (rust / navy).
+   ============================================================ */
+
+#practice-arena { margin: 1.6em 0 2.4em; font-family: var(--book-sans, "Inter", system-ui, sans-serif); }
+
+#practice-arena .pa {
+  border: 1px solid color-mix(in srgb, var(--fg) 16%, transparent);
+  border-radius: 16px;
+  padding: 22px 24px 20px;
+  background:
+    radial-gradient(120% 100% at 100% 0%, color-mix(in srgb, var(--links) 8%, transparent), transparent 60%),
+    color-mix(in srgb, var(--fg) 3%, transparent);
+  box-shadow: 0 1px 2px color-mix(in srgb, var(--fg) 10%, transparent);
+}
+
+#practice-arena .pa-top { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+#practice-arena .pa-tag {
+  font-size: 11.5px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase;
+  padding: 4px 11px; border-radius: 999px;
+  border: 1px solid color-mix(in srgb, var(--links) 40%, transparent);
+  color: var(--links); background: color-mix(in srgb, var(--links) 10%, transparent);
+}
+#practice-arena .pa-read  { --links: #2e9e83; }   /* tint per system type via local links override */
+#practice-arena .pa-write { --links: #c98f18; }
+#practice-arena .pa-media { --links: #8a63d2; }
+#practice-arena .pa-event { --links: #d1453b; }
+#practice-arena .pa-score { font-size: 13px; color: color-mix(in srgb, var(--fg) 65%, transparent); }
+#practice-arena .pa-score b { color: var(--fg); }
+
+#practice-arena .pa-system { margin: 14px 0 6px; font-size: 21px; font-weight: 700; font-family: var(--book-serif, Georgia, serif); }
+#practice-arena .pa-prompt { margin: 0 0 14px; font-size: 15.5px; line-height: 1.6; color: color-mix(in srgb, var(--fg) 90%, transparent); }
+
+#practice-arena .pa-givens { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 8px; margin: 0 0 14px; }
+#practice-arena .pa-given {
+  display: flex; justify-content: space-between; gap: 8px; align-items: baseline;
+  font-size: 13px; padding: 7px 11px; border-radius: 8px;
+  background: color-mix(in srgb, var(--fg) 5%, transparent);
+  border: 1px solid color-mix(in srgb, var(--fg) 9%, transparent);
+}
+#practice-arena .pa-given span { color: color-mix(in srgb, var(--fg) 60%, transparent); }
+#practice-arena .pa-given b { font-variant-numeric: tabular-nums; }
+
+#practice-arena .pa-instruct { font-size: 13.5px; color: color-mix(in srgb, var(--fg) 65%, transparent); margin: 4px 0 12px; }
+
+#practice-arena .pa-asks { display: grid; gap: 14px; }
+#practice-arena .pa-ask label { display: block; font-size: 14px; font-weight: 600; margin-bottom: 6px; }
+#practice-arena .pa-inrow { display: flex; gap: 8px; }
+#practice-arena .pa-input {
+  flex: 1 1 auto; min-width: 0;
+  font-family: var(--book-mono, monospace); font-size: 15px;
+  padding: 9px 12px; border-radius: 8px;
+  border: 1px solid color-mix(in srgb, var(--fg) 22%, transparent);
+  background: var(--bg); color: var(--fg);
+}
+#practice-arena .pa-input:focus { outline: 2px solid color-mix(in srgb, var(--links) 55%, transparent); outline-offset: 0; border-color: var(--links); }
+#practice-arena .pa-input:disabled { opacity: 0.7; }
+#practice-arena .pa-unit, #practice-arena .pa-unit-fixed {
+  font-family: var(--book-mono, monospace); font-size: 14px;
+  padding: 9px 10px; border-radius: 8px;
+  border: 1px solid color-mix(in srgb, var(--fg) 22%, transparent);
+  background: color-mix(in srgb, var(--fg) 6%, transparent); color: var(--fg);
+}
+#practice-arena .pa-unit-fixed { display: inline-flex; align-items: center; color: color-mix(in srgb, var(--fg) 65%, transparent); }
+#practice-arena .pa-hint { font-size: 12px; color: color-mix(in srgb, var(--fg) 48%, transparent); margin-top: 5px; font-family: var(--book-mono, monospace); }
+
+#practice-arena .pa-verdict { margin-top: 10px; }
+#practice-arena .pa-b { display: inline-block; font-size: 12.5px; font-weight: 700; padding: 3px 10px; border-radius: 999px; }
+#practice-arena .pa-spot  { color: #1a7a5e; background: color-mix(in srgb, #2e9e83 22%, transparent); }
+#practice-arena .pa-close { color: #9a6b00; background: color-mix(in srgb, #c98f18 24%, transparent); }
+#practice-arena .pa-off   { color: #a5302a; background: color-mix(in srgb, #d1453b 20%, transparent); }
+#practice-arena .pa-skip  { color: color-mix(in srgb, var(--fg) 60%, transparent); background: color-mix(in srgb, var(--fg) 10%, transparent); }
+#practice-arena .pa-answer { font-size: 14px; margin: 7px 0 0; }
+#practice-arena .pa-answer b { font-variant-numeric: tabular-nums; }
+#practice-arena .pa-yours { color: color-mix(in srgb, var(--fg) 55%, transparent); font-size: 13px; }
+#practice-arena .pa-working {
+  margin: 8px 0 0; padding: 10px 13px; border-radius: 8px;
+  font-family: var(--book-mono, monospace); font-size: 12.5px; line-height: 1.55;
+  background: color-mix(in srgb, var(--fg) 6%, transparent);
+  border-left: 3px solid color-mix(in srgb, var(--links) 45%, transparent);
+  overflow-x: auto; white-space: pre;
+}
+
+#practice-arena .pa-btns { display: flex; gap: 10px; margin-top: 18px; }
+#practice-arena button {
+  font-family: var(--book-sans, system-ui, sans-serif); font-size: 14px; font-weight: 600;
+  padding: 10px 18px; border-radius: 9px; cursor: pointer; border: 1px solid transparent;
+  transition: transform .1s ease, background .15s ease;
+}
+#practice-arena button:active { transform: translateY(1px); }
+#practice-arena .pa-reveal { background: var(--links); color: #fff; }
+#practice-arena .pa-reveal:hover { filter: brightness(1.06); }
+#practice-arena .pa-next {
+  background: color-mix(in srgb, var(--fg) 8%, transparent); color: var(--fg);
+  border-color: color-mix(in srgb, var(--fg) 20%, transparent);
+}
+#practice-arena .pa-next:hover { background: color-mix(in srgb, var(--fg) 13%, transparent); }
+
+#practice-arena .pa-sowhat {
+  margin-top: 16px; padding: 14px 18px; border-radius: 10px; font-size: 14.5px; line-height: 1.6;
+  border: 1px solid color-mix(in srgb, #2e9e83 40%, transparent);
+  background: color-mix(in srgb, #2e9e83 8%, transparent);
+}
+#practice-arena .pa-say { margin-top: 10px; font-size: 13.5px; font-weight: 600; color: color-mix(in srgb, var(--fg) 75%, transparent); }
+
+@media (max-width: 700px) {
+  #practice-arena .pa { padding: 18px 16px; }
+  #practice-arena .pa-top { align-items: flex-start; }
+}
